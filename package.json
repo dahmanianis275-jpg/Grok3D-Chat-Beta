@@ -1,0 +1,59 @@
+{
+  "name": "grok3d-chat-assistant",
+  "version": "0.2.0-beta",
+  "description": "Free 3D face ChatGPT-style AI assistant with voice. Not a real human. HTML + Electron.",
+  "main": "electron/main.js",
+  "author": "Grok3D Community",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win",
+    "dist:portable": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.grok3d.chat.assistant",
+    "productName": "Grok3D Chat Assistant",
+    "copyright": "Free software — MIT License",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "index.html",
+      "electron/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Grok3D Chat Assistant",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "license": "LICENSE"
+    },
+    "portable": {
+      "artifactName": "Grok3D-Chat-Assistant-Portable.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  }
+}
